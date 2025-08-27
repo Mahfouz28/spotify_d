@@ -13,9 +13,16 @@ class Getstartedpage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(AppImages.getStartedImage, fit: BoxFit.cover),
+          Positioned(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              AppImages.getStartedImage,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
           SizedBox(
             width: double.infinity,
@@ -24,7 +31,7 @@ class Getstartedpage extends StatelessWidget {
               children: [
                 SizedBox(height: 30),
                 Image.asset(AppVectors.spotifyLogo, height: 60, width: 196),
-                Spacer(),
+                SizedBox(height: 470),
                 Text(
                   "Enjoy listening to music",
                   style: TextStyle(
@@ -44,18 +51,19 @@ class Getstartedpage extends StatelessWidget {
                     color: AppColors.gray,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 40),
 
                 SizedBox(
-                  height: 80,
+                  height: 92,
                   width: 330,
                   child: BasicElevatedBotton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const ChooseModelScreen(),
+                          builder:
+                              (BuildContext context) =>
+                                  const ChooseModelScreen(),
                         ),
                       );
                     },

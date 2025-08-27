@@ -1,23 +1,23 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/SpotifySnackBar.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
-import 'package:spotify/data/models/auth/sign_in_user_req.dart';
-import 'package:spotify/domain/usecases/auth/sign_in.dart';
-import 'package:spotify/presentation/auth/register/rigester_screen.dart';
+import 'package:spotify/data/models/auth/creat_user_req.dart';
+import 'package:spotify/domain/usecases/auth/sign_up.dart';
+import 'package:spotify/presentation/auth/sigin_in/sign_in.dart';
 import 'package:spotify/presentation/root/pages/root.dart';
 import 'package:spotify/presentation/widgets/back_botton.dart';
 import 'package:spotify/presentation/widgets/basic_elvated_botton.dart';
 import 'package:spotify/presentation/widgets/text_form_field.dart';
 import 'package:spotify/service_locator.dart';
 
-class SignIn extends StatelessWidget {
-  SignIn({super.key});
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+class Register extends StatelessWidget {
+  Register({super.key});
+  final TextEditingController namecontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: 80),
                   Text(
-                    "Sigin In",
+                    "Register",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 20),
@@ -53,7 +53,7 @@ class SignIn extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "If you need any help ",
+                        "If You Need Any Support ",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w300,
@@ -75,30 +75,27 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: 38),
                   CustomTextFormField(
+                    hintText: "Full Name",
+                    controller: namecontroller,
+                  ),
+
+                  SizedBox(height: 16),
+
+                  CustomTextFormField(
                     hintText: "Enter UserName OR Email",
-                    controller: emailController,
+                    controller: emailcontroller,
                   ),
                   SizedBox(height: 16),
 
                   CustomTextFormField(
-                    controller: passwordController,
+                    controller: passwordcontroller,
                     hintText: "Password",
                     suffixIcon: Icon(
                       Icons.remove_red_eye_outlined,
                       color: Colors.grey,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.black87,
-                      ),
-                      onPressed: () {},
-                      child: Text("Rcovery Password"),
-                    ),
-                  ),
+
                   SizedBox(height: 22),
                   SizedBox(
                     height: 90,
@@ -106,10 +103,11 @@ class SignIn extends StatelessWidget {
                     child: BasicElevatedBotton(
                       text: "Sign In",
                       onPressed: () async {
-                        var result = await sl<SignInUseCase>().call(
-                          params: SignInUserReq(
-                            email: emailController.text.trim().toString(),
-                            password: passwordController.text.trim().toString(),
+                        var result = await sl<SignupUseCase>().call(
+                          params: CreatUserReq(
+                            email: emailcontroller.text.trim().toString(),
+                            password: passwordcontroller.text.trim().toString(),
+                            fullname: namecontroller.text.trim().toString(),
                           ),
                         );
                         result.fold(
@@ -120,7 +118,7 @@ class SignIn extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RootPage(),
+                                builder: (context) => const RootPage(),
                               ),
                             );
                           },
@@ -172,7 +170,7 @@ class SignIn extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Not A Member ?",
+                        "Do You Have An Account ?",
                         style: TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.w400,
@@ -183,11 +181,11 @@ class SignIn extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Register()),
+                            MaterialPageRoute(builder: (context) => SignIn()),
                           );
                         },
                         child: Text(
-                          " Rigister Now",
+                          " Sigin In",
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 19,

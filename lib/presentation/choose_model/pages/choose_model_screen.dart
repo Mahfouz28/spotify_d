@@ -14,10 +14,16 @@ class ChooseModelScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            AppImages.chooseModelImage,
-            width: double.infinity,
-            fit: BoxFit.cover,
+          Positioned(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              AppImages.chooseModelImage,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
           Positioned(
             child: SizedBox(
@@ -31,7 +37,8 @@ class ChooseModelScreen extends StatelessWidget {
                     width: 196,
                     child: Image.asset(AppVectors.spotifyLogo),
                   ),
-                  SizedBox(height: 280),
+
+                  SizedBox(height: 390),
                   Text(
                     "Choose Mode",
                     style: TextStyle(
@@ -103,10 +110,10 @@ class ChooseModelScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 140),
                   SizedBox(
                     width: 330,
-                    height: 80,
+                    height: 92,
                     child: BasicElevatedBotton(
                       text: "Continue",
                       onPressed: () {
