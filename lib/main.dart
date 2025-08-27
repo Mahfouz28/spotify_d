@@ -9,6 +9,7 @@ import 'package:spotify/firebase_options.dart';
 import 'package:spotify/presentation/choose_model/bloc/theme_cubit.dart';
 import 'package:spotify/presentation/splash/pages/splash.dart';
 import 'package:spotify/service_locator.dart';
+import 'package:spotify/presentation/root/pages/root.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
               darkTheme: AppThemes.darkTheme,
               themeMode: mode,
 
-              home: const SplashScreen(),
+              home: RootPage(),
             ),
       ),
     );

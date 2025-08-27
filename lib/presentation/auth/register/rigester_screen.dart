@@ -118,7 +118,7 @@ class Register extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RootPage(),
+                                builder: (context) => RootPage(),
                               ),
                             );
                           },
