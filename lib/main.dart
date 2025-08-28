@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               darkTheme: AppThemes.darkTheme,
               themeMode: mode,
 
-              home: RootPage(),
+              home: SplashScreen(),
             ),
       ),
     );

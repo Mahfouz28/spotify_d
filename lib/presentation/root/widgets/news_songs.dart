@@ -92,7 +92,7 @@ Widget songs(List<SongsEntities> songs, List<String> covers) {
           ),
           const SizedBox(height: 8),
           Text(
-            songs[index].titel,
+            songs[index].title,
             style: const TextStyle(color: Colors.white, fontSize: 14),
             overflow: TextOverflow.ellipsis,
           ),

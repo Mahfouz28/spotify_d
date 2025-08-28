@@ -15,7 +15,7 @@ Future<void> initializeDepnedecies() async {
   sl.registerSingleton<Authintcation>(AuthRepoImp());
   sl.registerSingleton<SignupUseCase>(SignupUseCase());
   sl.registerSingleton<SignInUseCase>(SignInUseCase());
-  sl.registerSingleton<SongSubaBaseService>(SongSubaServiceimpl());
+  sl.registerSingleton<SongSubaBaseService>(SongSubaServiceImpl());
   sl.registerSingleton<SongsRepo>(SongsRepoImpl());
   sl.registerSingleton<SongsUseCase>(SongsUseCase());
 }

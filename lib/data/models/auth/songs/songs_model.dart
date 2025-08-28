@@ -2,27 +2,26 @@
 import 'package:spotify/domain/entities/songs_entities/songs_entities.dart';
 
 class SongsModel {
-  final String? titel;
+  final String? title;
   final String? artist;
   final num? duration;
-  final DateTime? releasDate;
+  final DateTime? releaseDate;
 
   SongsModel({
-    required this.titel,
+    required this.title,
     required this.artist,
     required this.duration,
-    required this.releasDate,
+    required this.releaseDate,
   });
 
   factory SongsModel.fromJson(Map<String, dynamic> data) {
     return SongsModel(
-      titel: data['titel'] as String?,
+      title: data['title'] as String?,
       artist: data['artist'] as String?,
       duration: data['duration'] as num?,
-      // اسم العمود عندك "releasDate" حسب الجدول
-      releasDate:
-          data['releasDate'] != null
-              ? DateTime.parse(data['releasDate'].toString())
+      releaseDate:
+          data['release_date'] != null
+              ? DateTime.parse(data['release_date'].toString())
               : null,
     );
   }
@@ -32,10 +31,10 @@ class SongsModel {
 extension SongsModelX on SongsModel {
   SongsEntities toEntity() {
     return SongsEntities(
-      titel: titel ?? '',
+      title: title ?? '',
       artist: artist ?? '',
       duration: duration ?? 0,
-      releasDate: releasDate ?? DateTime.now(),
+      releaseDate: releaseDate ?? DateTime.now(),
     );
   }
 }

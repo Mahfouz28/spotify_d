@@ -5,3 +5,4 @@ extension IsDarkMode on BuildContext {
     return Theme.of(this).brightness == Brightness.dark;
   }
 }
+

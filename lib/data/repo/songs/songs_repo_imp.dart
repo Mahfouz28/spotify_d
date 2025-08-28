@@ -6,6 +6,6 @@ import 'package:spotify/service_locator.dart';
 class SongsRepoImpl extends SongsRepo {
   @override
   Future<Either> featchNewsData() async {
-    return await sl<SongSubaBaseService>().featchNewsSongs();
+    return await sl<SongSubaBaseService>().fetchNewsSongs();
   }
 }
